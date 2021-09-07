@@ -1,0 +1,29 @@
+{
+  "name": "vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "serve": "vite preview --host"
+  },
+  "dependencies": {
+    "@types/node": "^16.7.10",
+    "ant-design-vue": "^2.2.6",
+    "axios": "^0.21.2",
+    "chart.js": "^3.5.1",
+    "element-plus": "^1.1.0-beta.8",
+    "qs": "^6.10.1",
+    "vite-plugin-style-import": "^1.2.1",
+    "vue": "^3.2.6",
+    "vue-happy-bus": "^2.0.1-vue3",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2",
+    "wangeditor": "^4.7.7",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.6.1",
+    "@vue/compiler-sfc": "^3.2.6",
+    "vite": "^2.5.2"
+  }
+}
