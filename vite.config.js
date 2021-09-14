@@ -30,12 +30,13 @@ export default defineConfig({
 	server: {
 		cors: true,
 		open: true,
-		host: '127.0.0.1',
+		host: 'localhost',
 		port: 3000,
 		proxy: {
 			'/api': {
-				target: 'http://127.0.0.1:8080', //实际请求地址
+				target: 'http://localhost:8888/WuHu', //实际请求地址
 				changeOrigin: true,
+				ws: false,
 				rewrite: (path) => path.replace(/^\/api/, '')
 			},
 		}

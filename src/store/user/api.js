@@ -4,7 +4,7 @@ const TIMEOUT = 6000
 //get
 export const getUser = (data) => {
 	return axios({
-		url: "api/user/getUser",
+		url: "/api/user/getUser",
 		method: "get",
 		data,
 		config: {
@@ -18,7 +18,7 @@ export const getUser = (data) => {
 //post
 export const login = (data) => {
 	return Promise.resolve(axios({
-		url: "api/user/login",
+		url: "/api/user/login",
 		method: "post",
 		data,
 		config: {
