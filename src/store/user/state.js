@@ -1,6 +1,5 @@
 const state = {
-	username: '',
-	password: ''
+	user: JSON.parse(localStorage.getItem("user")) || {},
 }
 
 export default state

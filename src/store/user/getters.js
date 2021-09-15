@@ -1,9 +1,6 @@
 const getters = {
-	getUserName() {
-		return state.user.username
-	},
-	getPassWord() {
-		return state.user.password
+	getUser(state) {
+		return state.user
 	}
 }
 export default getters

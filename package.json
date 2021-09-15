@@ -7,11 +7,13 @@
     "serve": "vite preview --host"
   },
   "dependencies": {
+    "@jiaminghi/data-view": "^2.10.0",
     "@types/node": "^16.7.10",
     "ant-design-vue": "^2.2.6",
     "axios": "^0.21.2",
     "chart.js": "^3.5.1",
     "element-plus": "^1.1.0-beta.8",
+    "https": "^1.0.0",
     "qs": "^6.10.1",
     "vite-plugin-style-import": "^1.2.1",
     "vue": "^3.2.6",

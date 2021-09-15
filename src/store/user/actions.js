@@ -3,7 +3,7 @@ const actions = {
 	login({
 		commit
 	}, value) {
-		return api.login(value)
+		 return api.login(value)
 	}
 }
 export default actions

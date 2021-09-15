@@ -14,6 +14,16 @@ const routes = [
 		name: 'login',
 		component: () => import('@/views/login.vue')
 	},
+	{
+		path: '/home',
+		name: 'home',
+		component: () => import('@/views/home.vue')
+	},
+	{
+		path: '/main',
+		name: 'main',
+		component: () => import('@/views/main.vue')
+	}
 ];
 
 // 导出路由

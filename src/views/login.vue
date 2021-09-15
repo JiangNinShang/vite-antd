@@ -65,7 +65,9 @@
 		methods: {
 			submit() {
 				this.$store.dispatch('user/login', this.user).then(res => {
-					console.log('res', res)
+					let user = res.data.data;
+					this.$store.commit('user/SetUser', user);
+					this.$router.push('/main')
 				}).catch(err => {
 					console.log('err', err)
 				})

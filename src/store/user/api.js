@@ -19,7 +19,7 @@ export const getUser = (data) => {
 export const login = (data) => {
 	return Promise.resolve(axios({
 		url: "/api/user/login",
-		method: "post",
+		method: "POST",
 		data,
 		config: {
 			headers: {
