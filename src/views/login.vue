@@ -67,7 +67,7 @@
 				this.$store.dispatch('user/login', this.user).then(res => {
 					let user = res.data.data;
 					this.$store.commit('user/SetUser', user);
-					this.$router.push('/main')
+					this.$router.push('/home')
 				}).catch(err => {
 					console.log('err', err)
 				})

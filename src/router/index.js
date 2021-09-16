@@ -5,25 +5,15 @@ import {
 // 路由信息
 const routes = [
 	{
-		path: '/main',
-		name: 'main',
-		component: () => import('@/components/HelloWorld.vue')
-	},
-	{
 		path: '/',
-		name: 'login',
+		name: '登录',
 		component: () => import('@/views/login.vue')
 	},
 	{
 		path: '/home',
-		name: 'home',
+		name: '主页',
 		component: () => import('@/views/home.vue')
 	},
-	{
-		path: '/main',
-		name: 'main',
-		component: () => import('@/views/main.vue')
-	}
 ];
 
 // 导出路由
