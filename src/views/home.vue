@@ -2,7 +2,7 @@
 	<a-layout style="min-height: 100vh">
 		<a-layout-sider v-model:collapsed="collapsed" collapsible>
 			<div class="logo">
-				<h2  style="color:red">我是个logo</h2>
+				<h2 style="color:red">我是个logo</h2>
 			</div>
 			<a-menu :default-selected-keys="['1']" :default-open-keys="['2']" mode="inline" theme="dark"
 				:inline-collapsed="collapsed">
@@ -48,30 +48,6 @@
 				</a-breadcrumb>
 				<div :style="{ padding: '24px', background: '#fff', minHeight: '800px' }">
 					<sku :sum="4"></sku>
-					<span>
-						<a-progress :stroke-color="{
-					        '0%': '#108ee9',
-					        '100%': '#87d068',
-					      }" :percent="99.9" />
-					</span>
-					<span>
-						<a-progress :stroke-color="{
-					        from: '#108ee9',
-					        to: '#87d068',
-					      }" :percent="99.9" status="active" />
-					</span>
-					<span>
-						<a-progress type="circle" :stroke-color="{
-					        '0%': '#108ee9',
-					        '100%': '#87d068',
-					      }" :percent="90" />
-					</span>
-					<span>
-						<a-progress type="circle" :stroke-color="{
-					        '0%': '#108ee9',
-					        '100%': '#87d068',
-					      }" :percent="100" />
-					</span>
 				</div>
 			</a-layout-content>
 			<a-layout-footer style="text-align: center">
@@ -148,26 +124,21 @@
 			MailOutlined,
 		},
 	};
-	const list = [
-		{
+	const list = [{
 			key: '1',
 			title: 'Option 1',
 		},
 		{
 			key: '2',
 			title: 'Navigation 2',
-			children: [
-				{
-					key: '2.1',
-					title: 'Navigation 3',
-					children: [
-						{
-							key: '2.1.1',
-							title: 'Option 2.1.1'
-						},
-					],
-				}, 
-			],
+			children: [{
+				key: '2.1',
+				title: 'Navigation 3',
+				children: [{
+					key: '2.1.1',
+					title: 'Option 2.1.1'
+				}, ],
+			}, ],
 		},
 	];
 	export default defineComponent({
