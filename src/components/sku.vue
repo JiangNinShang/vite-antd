@@ -1,7 +1,7 @@
 <template>
-	<el-carousel :interval="4000" type="card" height="200px">
+	<el-carousel :interval="4000" type="card" height="300px">
 		<el-carousel-item v-for="item in sum" :key="item">
-			<h3 class="medium">{{ item }}</h3>
+			<el-image :src="item + '.jpg'" fit="scale-down"></el-image>
 		</el-carousel-item>
 	</el-carousel>
 </template>

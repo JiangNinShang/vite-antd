@@ -51,8 +51,13 @@
 					<a-breadcrumb-item>假的(父)</a-breadcrumb-item>
 					<a-breadcrumb-item>假的(子)</a-breadcrumb-item>
 				</a-breadcrumb>
-				<div :style="{ padding: '24px', background: '#fff', minHeight: '800px' }">
-					<sku :sum="4"></sku>
+				<div :style="{ padding: '24px', background: '#fff', minHeight: '300px' }">
+					<sku :sum="6"></sku>
+				</div>
+				<br/>
+				<br/>
+				<div>
+					<dateTable></dateTable>
 				</div>
 			</a-layout-content>
 			<a-layout-footer style="text-align: center">
@@ -96,6 +101,7 @@
 		AntDesignOutlined,
 	} from '@ant-design/icons-vue';
 	import sku from '@/components/sku.vue'
+	import dateTable from '@/components/table.vue'
 	const SubMenu = {
 		name: 'SubMenu',
 		props: {
@@ -175,6 +181,7 @@
 		components: {
 			'sub-menu': SubMenu,
 			sku,
+			dateTable,
 			MenuFoldOutlined,
 			MenuUnfoldOutlined,
 			PieChartOutlined,
