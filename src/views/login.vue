@@ -50,12 +50,10 @@
 				},
 				rules: {
 					name: [{
-						required: true,
 						validator: name,
 						trigger: 'blur'
 					}],
 					pwd: [{
-						required: true,
 						validator: pwd,
 						trigger: 'blur'
 					}],

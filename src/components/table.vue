@@ -14,7 +14,8 @@
 				<DeleteOutlined />清空所有条件和排序
 			</a-button>
 		</div>
-		<a-table :columns="columns" :data-source="data" @change="handleChange" bordered :scroll="{ y: 240 }">
+		<a-table :pagination="pagination" :loading="loading" :columns="columns" :data-source="data"
+			@change="handleChange" bordered :scroll="{ y: 240 }">
 			<template v-for="col in ['name', 'age', 'address']" #[col]="{ text, record }" :key="col">
 				<div>
 					<a-input v-if="editableData[record.key]" v-model:value="editableData[record.key][col]"
@@ -27,14 +28,15 @@
 			<template #operation="{ record }">
 				<div style="display:flex">
 					<div style="margin-left: 10%;">
-						<a-popconfirm v-if="data.length" title="Sure to delete?" @confirm="onDelete(record.key)">
+						<a-popconfirm v-if="data.length" :title="'是否删除'+data[record.key].name+'?' "
+							@confirm="onDelete(record.key)">
 							<DeleteOutlined />
 						</a-popconfirm>
 					</div>
 					<div style="margin-left:50%">
 						<span v-if="editableData[record.key]">
 							<a @click="save(record.key)">Save</a>
-							<a-popconfirm title="Sure to cancel?" @confirm="cancel(record.key)">
+							<a-popconfirm title="是否取消保存?" @confirm="cancel(record.key)">
 								<a style="margin-left: 20px;">Cancel</a>
 							</a-popconfirm>
 						</span>
@@ -72,25 +74,12 @@
 	} from '@ant-design/icons-vue';
 	type Key = ColumnProps['key'];
 	type Pagination = TableState['pagination'];
-
 	interface DataItem {
 		key: string;
 		name: string;
 		age: number;
 		address: string;
 	}
-
-
-	const data: DataItem[] = [];
-	for (let i = 0; i < 100; i++) {
-		data.push({
-			key: i.toString(),
-			name: `Edrward ${i}`,
-			age: 32,
-			address: `London Park no. ${i}`,
-		});
-	}
-
 	export default defineComponent({
 		components: {
 			RedoOutlined,
@@ -101,8 +90,102 @@
 		setup() {
 			const filteredInfo = ref();
 			const sortedInfo = ref();
-			const dataSource = ref(data);
+			const loading = ref(false);
+			const pagination = ref({
+				total: 0,
+				pageSize: 5, //每页中显示10条数据
+				showSizeChanger: true,
+				pageSizeOptions: ["5", "10", "20", "50"], //每页中显示的数据
+				showTotal: total => `共有 ${total} 条数据`, //分页中显示总的数据
+			});
+			const queryParam = ref({
+				page: 1, //第几页
+				size: 5, //每页中显示数据的条数
+				hosName: "",
+				hosCode: "",
+				province: "",
+				city: ""
+			});
 			const editableData: UnwrapRef < Record < string, DataItem >> = reactive({});
+			const data: Ref < DataItem[] > = ref([{
+					key: '0',
+					name: 'Edward King 0',
+					age: 32,
+					address: 'London, Park Lane no. 0',
+				},
+				{
+					key: '1',
+					name: 'Edward King 1',
+					age: 32,
+					address: 'London, Park Lane no. 1',
+				},
+				{
+					key: '2',
+					name: 'Edward King 3',
+					age: 32,
+					address: 'London, Park Lane no. 2',
+				},
+				{
+					key: '3',
+					name: 'Edward King 4',
+					age: 32,
+					address: 'London, Park Lane no. 3',
+				},
+				{
+					key: '4',
+					name: 'Edward King 5',
+					age: 32,
+					address: 'London, Park Lane no. 4',
+				},
+				{
+					key: '5',
+					name: 'Edward King 6',
+					age: 32,
+					address: 'London, Park Lane no. 5',
+				}, {
+					key: '6',
+					name: 'Edward King 7',
+					age: 32,
+					address: 'London, Park Lane no. 6',
+				},
+				{
+					key: '7',
+					name: 'Edward King 10',
+					age: 32,
+					address: 'London, Park Lane no. 7',
+				},
+				{
+					key: '8',
+					name: 'Edward King 11',
+					age: 32,
+					address: 'London, Park Lane no. 8',
+				},
+				{
+					key: '9',
+					name: 'Edward King 10',
+					age: 32,
+					address: 'London, Park Lane no. 9',
+				},
+				{
+					key: '10',
+					name: 'Edward King 11',
+					age: 32,
+					address: 'London, Park Lane no. 10',
+				},
+				{
+					key: '11',
+					name: 'Edward King 10',
+					age: 32,
+					address: 'London, Park Lane no. 11',
+				},
+				{
+					key: '12',
+					name: 'Edward King 11',
+					age: 32,
+					address: 'London, Park Lane no. 12',
+				},
+			]);
+			const dataSource = ref(data);
 			const columns = computed(() => {
 				const filtered = filteredInfo.value || {};
 				const sorted = sortedInfo.value || {};
@@ -174,7 +257,6 @@
 			});
 
 			const handleChange = (pagination: Pagination, filters: TableStateFilters, sorter: any) => {
-				console.log('Various parameters', pagination, filters, sorter);
 				filteredInfo.value = filters;
 				sortedInfo.value = sorter;
 			};
@@ -195,6 +277,9 @@
 			const cancel = (key: string) => {
 				delete editableData[key];
 			};
+			const onDelete = (key: string) => {
+				dataSource.value.splice(key, 1);
+			}
 			return {
 				dataSource,
 				editableData,
@@ -207,6 +292,10 @@
 				save,
 				cancel,
 				editingKey: '',
+				onDelete,
+				loading,
+				pagination,
+				queryParam
 			};
 		},
 	});
