@@ -84,6 +84,7 @@
 	import {
 		cloneDeep
 	} from 'lodash-es';
+	import axios from 'axios'
 	type Key = ColumnProps['key'];
 	type Pagination = TableState['pagination'];
 	const columns = [{
@@ -198,29 +199,50 @@
 			};
 			// 添加
 			const handleAdd = () => {
-				const newData = {
-					id: dataSource.value.length + 1,
-					name: '111',
-					age: 10,
-					time: '2021-05-28 13:19:14',
-					address: 'aaa',
+				let newData = {
+					name: Math.round(Math.random() * 100),
+					age: Math.round(Math.random() * 100),
+					address: Math.round(Math.random() * 100),
 				};
-				dataSource.value.push(newData);
+				axios.post('/api/users',
+					newData
+				).then(res => {
+					dataSource.value.push(res.data.data);
+				}).catch(err => {
+					alert(err)
+				})
 			};
 			// 删除
 			const onDelete = (key: int) => {
-				let giao = dataSource.value.splice(key - 1, 1);
-				giao == [] ? dataSource.value = [] : giao;
+				axios.delete('/api/users', {
+					params: {
+						id: key
+					}
+				}).then(res => {
+					axios.get('/api/users').then(res => {
+						dataSource.value = res.data.data
+					})
+				}).catch(err => {
+					alert(err)
+				})
 			};
 
 			// 编辑
 			const edit = (key: int) => {
-				editableData[key] = dataSource.value[key - 1];
+				console.log(dataSource)
+				editableData[key] = dataSource[key];
 			};
 			// 保存
 			const save = (key: int) => {
-				dataSource.value[key - 1] = editableData[key]
+				axios.patch('/api/users',
+					editableData[key]
+				).then(res => {
+					dataSource.value.push(res.data.data);
+				}).catch(err => {
+					alert(err)
+				})
 				delete editableData[key];
+
 			};
 			// 取消保存
 			const cancel = (key: int) => {
@@ -228,7 +250,9 @@
 			};
 			// 刷新
 			const refresh = () => {
-
+				axios.get('/api/users').then(res => {
+					dataSource.value = res.data.data
+				})
 			}
 			// 选择框
 			const state = reactive < {

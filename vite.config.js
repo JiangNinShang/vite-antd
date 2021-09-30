@@ -34,11 +34,12 @@ export default defineConfig({
 		open: true,
 		host: 'localhost',
 		port: 3000,
-		https: true,
+		// https: true,
 		hotOnly: false,
 		proxy: {
 			'/api': {
-				target: 'https://localhost:8099/WuHu', //实际请求地址
+				// target: 'https://localhost:8099/WuHu', //实际请求地址
+				target: 'http://cvx9f01y.dongtaiyuming.net:54967/WuHu', //实际请求地址
 				changeOrigin: true,
 				secure: false,
 				logLevel: "debug",

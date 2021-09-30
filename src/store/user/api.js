@@ -2,18 +2,17 @@ import axios from "@/http/axios.js"
 const TIMEOUT = 6000
 //请求示例
 //get
-export const getUser = (data) => {
-	return axios({
-		url: "/api/user/getUser",
-		method: "get",
-		data,
+export const users = () => {
+	return Promise.resolve(axios({
+		url: "/api/users",
+		method: "GET",
 		config: {
 			headers: {
 				'Request-Type': 'wechat'
 			},
 			timeout: TIMEOUT
 		}
-	})
+	}))
 }
 //post
 export const login = (data) => {
@@ -31,5 +30,5 @@ export const login = (data) => {
 }
 export default {
 	login,
-	getUser
+	users
 }

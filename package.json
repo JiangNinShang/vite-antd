@@ -19,6 +19,7 @@
     "vite-plugin-style-import": "^1.2.1",
     "vue": "^3.2.6",
     "vue-happy-bus": "^2.0.1-vue3",
+    "vue-request": "^1.2.0",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2",
     "wangeditor": "^4.7.7",

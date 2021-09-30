@@ -1,6 +1,6 @@
 <template>
-	<a-layout style="min-height: 100vh">
-		<a-layout-sider v-model:collapsed="collapsed" collapsible>
+	<a-layout style="min-height: 100vh" v-model:collapsed="collapsed" >
+		<a-layout-sider collapsible>
 			<div style="width: auto;">
 				<a-image style="height: 20%;"
 					src="https://img0.baidu.com/it/u=2722851849,398254634&fm=26&fmt=auto"

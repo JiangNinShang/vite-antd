@@ -4,6 +4,11 @@ const actions = {
 		commit
 	}, value) {
 		 return api.login(value)
-	}
+	},
+	getUser({
+		commit
+	}) {
+		 return api.users()
+	},
 }
 export default actions
